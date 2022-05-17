@@ -1,9 +1,9 @@
 ---
-title: Como Usar Lorentz3CX
+title: Lorentz Supervisor 3CX
 author: araguaci
 date: 2022-05-17
 category: Jekyll
 layout: post
 ---
 
-Como usar Lorentz3CX
+Lorentz Supervisor 3CX
