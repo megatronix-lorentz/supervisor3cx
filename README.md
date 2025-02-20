@@ -1,8 +1,11 @@
 # Lorentz Supervisor »
  
 🧑🏻‍💻 Soluções de Call Center
+
 🧑🏻‍💻 Módulo Supervisor de Call Center
+
 👩🏼‍💻 Atendimento com Sistemas de CTI, CRM, SAC, Help Desk, URA, Voice, Mobile e Tarifador.
+
 🎯 Solução personalizada!
 
 ```
