@@ -1,12 +1,8 @@
-# Lorentz Supervisor »
- 
-🧑🏻‍💻 Soluções de Call Center
+# Lorentz Orbitall — Documentação
 
-🧑🏻‍💻 Módulo Supervisor de Call Center
+Site de documentação do **Lorentz Orbitall** (Lorentz Supervisor), solução de gestão e monitoramento de Call Center CTI da Megatronix — administração, atendimento, discagem preditiva, gravação de chamadas e relatórios, com integração a Lorentz Server (CTI), Lorentz Cliente, 3CX e Asterisk.
 
-👩🏼‍💻 Atendimento com Sistemas de CTI, CRM, SAC, Help Desk, URA, Voice, Mobile e Tarifador.
-
-🎯 Solução personalizada!
+Gerado com [MkDocs](https://www.mkdocs.org/) + [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
 
 ```
  _                         _
@@ -24,112 +20,82 @@
 
 ```
 
+## Estrutura do conteúdo
+
+A navegação (`mkdocs.yml`) está organizada em:
+
+- **Administração** — configurações, funcionários, grupos, call center (agentes, ramais, fluxo, qualificação, script), estrutura funcional, permissões, tabelas de agenda e contato.
+- **Gerenciamento** — agenda, campanha, cliente, monitoramento.
+- **Lorentz Supervisor** — controles, configurações, discagem preditiva, organograma, FAQ.
+  - **Lorentz Server (CTI)** — documentação técnica, fluxo de sistema, entidades, API Web Agent.
+  - **Lorentz Cliente** — visão geral, discador preditivo + 3CX, configuração (INI), gravação de chamadas.
+- **Relatórios** — chamadas, atendimentos, produtividade, qualificação.
+
+## Comandos
+
+```bash
+yarn dev       # mkdocs serve — live-reload em http://localhost:8000
+yarn build     # mkdocs build -d public
+yarn copy      # copy.ps1 — sincroniza build com o projeto supervisor3cx (D:/app_lorentz)
+yarn publish   # publish.ps1 — commit + push do conteúdo de /public
+```
+
+Comandos `mkdocs` diretos:
+
+```bash
+mkdocs serve   # servidor com live-reload
+mkdocs build   # gera o site estático em ./site
+mkdocs gh-deploy
+mkdocs -h
+```
+
+## Deploy
+
+- **CI:** [.github/workflows/docs.yml](.github/workflows/docs.yml) builda com `mkdocs build` ao alterar `docs/**` ou `mkdocs.yml`, e publica o artefato `site` na Vercel (`VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`).
+- **Local:** `publish.ps1` faz commit/push manual do diretório `public` gerado.
+- Repositório do produto (Lorentz Supervisor / supervisor3cx): https://github.com/megatronix-lorentz/supervisor3cx/
+
+## Ferramentas de manutenção
+
+- [tools/icon_audit.py](tools/icon_audit.py) — audita o uso de ícones (`:material-...:` / `:fontawesome-...:`) na documentação. Veja convenções em [ICONOS.md](ICONOS.md).
+  ```bash
+  python tools/icon_audit.py --report icons_report.csv
+  ```
+- [tools/relatorios_link_check.py](tools/relatorios_link_check.py) — verifica links internos da seção de relatórios.
+
+## Versões de referência
+
+```
+Python: 3.11.4
+mkdocs: >=1.4.2
+mkdocs-material: 9.1.6
+mike: 1.1.2
+```
+
+Veja [requirements.txt](requirements.txt) para a lista completa de dependências Python.
+
+## Estrutura do projeto
+
+```
+mkdocs.yml          # configuração principal (nav, tema, plugins)
+docs/                # páginas em Markdown
+    index.md          # página inicial
+    images/           # imagens
+    assets/            # style.css / style.js
+overrides/           # customizações do tema (material/overrides)
+tools/               # scripts de auditoria e manutenção
+```
+
+## Tema e ícones
+
+- Tema: [mkdocs-material](https://github.com/squidfunk/mkdocs-material)
+- Convenções de ícones: [ICONOS.md](ICONOS.md) — `:material-...:` para UI, `:fontawesome-brands-...:` apenas para marcas/redes sociais.
+- [Ícones e emojis do Material](https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#using-emojis) · [Octicons](https://primer.style/foundations/icons/)
+
 ## Contato
 
- - Rede Social: [@megatronix](https://www.instagram.com/megatronixoficial/)
- - Telefone: (11) 3021-5561 - Nilson
- - Celular: (11) 9-8223-9345 - Nilson
- - [nilson@megatronix.com.br](mailto:nilson@megatronix.com.br)
- - [www.megatronix.com.br](http://www.megatronix.com.br)
-
-
-## Project documentation with Markdown.
-
-MkDocs is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation. Documentation source files are written in Markdown, and configured with a single YAML configuration file. Start by reading the introductory tutorial, then check the User Guide for more information.
-
-[MkDocs](https://www.mkdocs.org/getting-started/)
-
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-* `mkdocs gh-deploy`
-
-## Project layout
-
-    mkdocs.yml        # The configuration file.
-    docs/
-        index.md      # The documentation homepage.
-        ./assets/       # Other markdown pages, images and other files.
-            style.css 
-            style.js
-    overrides/
-        main.html
-
-## Package versions
-
-    ```python --version```
-
-        Python 3.11.4
-
-    ```mkdocs --version```
-
-        mkdocs, version 1.4.2 from C:\Python311\Lib\site-packages\mkdocs (Python 3.11)
-
-    ```pip show mkdocs-material```
-
-        Name: mkdocs-material
-        Version: 8.2.7
-        Summary: A Material Design theme for MkDocs
-        Home-page: https://squidfunk.github.io/mkdocs-material/
-        Author: Martin Donath
-        Author-email: martin.donath@squidfunk.com
-        License: MIT
-        Location: C:\Python311\Lib\site-packages
-        Requires: jinja2, markdown, mkdocs, mkdocs-material-extensions, pygments, pymdown-extensions
-
-    ```mike --version```
-
-        mike 1.1.2
-
-
-## Theme
-
-  - [mkdocs-material](https://github.com/squidfunk/mkdocs-material)
-
-## Ferramentas
-
-  - [imagesplitter](https://imagesplitter.org/pt)
-  - [gimp](https://www.gimp.org/)
-  - [mkdocs](https://www.mkdocs.org/)
-  - [mermaidflow](https://www.mermaidflow.app/editor)
-  - [mermaid](https://mermaid.live/edit#pako:eNptkMFKxDAQhl8lzElh-wI9CGlrQVhhwUXEpochmbaBJinZBJWm7252C3rQOc3M9__D8K8gnSIoYZjdh5zQB3ZuhGW5eHfi1VvPiuIhZWJQYWLVXft05Pe7oroyVq-v5PWgJbJ2jp9u22F9M_KRbCCeWNMdcQlu6f_SKrHHTp8mZ-kfWifWdgOWAxYSPavR93AAQ96gVvnx9WoRECYyJKDMraIB4xwECLtlKcbgXr6shDL4SAfwLo4T5HvzJU9xURio0Th6ND_bBe27c78zKR2cf96juiW2fQNDa2UW)
-  - [icons-emojis](https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#using-emojis)
-  - [octicons](https://primer.style/foundations/icons/)
-  - textkool
-    - [Big](https://textkool.com/pt/ascii-art-generator?hl=default&vl=default&font=Big&text=Lorentz%20Supervisor)
-    - [Shadow](https://textkool.com/pt/ascii-art-generator?hl=default&vl=default&font=Shadow&text=Lorentz%20Supervisor)
-    - [Red Phoenix](https://textkool.com/pt/ascii-art-generator?hl=default&vl=default&font=Red%20Phoenix&text=Lorentz%20Supervisor)
-    - [Doom](https://textkool.com/pt/ascii-art-generator?hl=default&vl=default&font=Doom&text=Lorentz%20Supervisor)
-
-## Edição de Imagens
-
-Para cortar uma imagem e criar outras imagens a partir dela, você pode usar várias ferramentas online que oferecem funcionalidades de corte de imagem de maneira eficiente e gratuita. Aqui estão algumas opções baseadas nas informações disponíveis na web:
-
-### Adobe Express: 
-
-  - Descrição: Com o Adobe Express, você pode cortar suas fotos online de maneira rápida e fácil. A ferramenta permite carregar uma imagem, escolher o formato e baixar o resultado.
-  - Funcionalidades: Você pode recortar sua imagem em formatos como círculo, oval, estrela, coração e outros. O Adobe Express também oferece recursos de edição como remoção de fundo, aplicação de filtros e animações.
-
-### Canva:
-  - Descrição: O Canva é uma ferramenta popular para editar imagens online. Oferece uma funcionalidade de corte que permite remover partes indesejadas da imagem para ajustar o tamanho ou melhorar a composição.
-  - Funcionalidades: Você pode cortar imagens para se ajustarem a designs específicos, criar layouts de scrapbooks com molduras, e até mesmo fazer montagens com várias fotos.
-
-### Fotor:
-  - Descrição: O Fotor permite cortar fotos facilmente online, mantendo a qualidade da imagem. É ideal para ajustar imagens para mídias sociais, currículos, impressões, etc.
-  - Funcionalidades: Com o Fotor, você pode definir o tamanho exato do corte, remover partes não desejadas, e até mesmo cortar fotos em formas irregulares como círculos.
-
-### Freepik:
-  - Descrição: O serviço de corte de imagem do Freepik permite cortar imagens instantaneamente, perfeito para perfis de redes sociais ou outros usos.
-  - Funcionalidades: Oferece corte livre, sem perda de qualidade, e a possibilidade de melhorar a qualidade da imagem para resoluções mais altas.
-
-### ImageSplitter:
-  - Descrição: Uma ferramenta online que, além de cortar, também permite redimensionar, converter e dividir imagens.
-  - Funcionalidades: Útil para criar mosaicos de fotos para o Instagram, onde você pode cortar imagens em tamanhos e formas específicas.
-
-### SimpleImageConvert.com:
-  - Descrição: Oferece um cortador de imagem online gratuito que suporta formatos comuns como PNG, JPG, GIF, BMP e WebP.
-  - Funcionalidades: Você pode cortar imagens em tamanhos exatos de pixel, perfeito para compartilhamento sem distorções.
-
+- Rede Social: [@megatronix](https://www.instagram.com/megatronixoficial/)
+- Telefone: (11) 3021-5561 — Nilson
+- Celular: (11) 9-8223-9345 — Nilson
+- [nilson@megatronix.com.br](mailto:nilson@megatronix.com.br)
+- [www.megatronix.com.br](http://www.megatronix.com.br)
